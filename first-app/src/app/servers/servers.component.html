@@ -1,0 +1,17 @@
+<input type="text" class="form-control" [(ngModel)]="serverName" />
+<button
+  (click)="onCreateServer()"
+  [disabled]="!allowNewServer"
+  class="btn btn-primary"
+>
+  Add Server
+</button>
+<p *ngIf="serverCreated; else noserver">{{ serverCreationStatus }}</p>
+<ng-template #noserver>
+  <p>No server was created</p>
+</ng-template>
+<p>{{ serverName }}</p>
+<app-server
+  *ngFor="let server of servers; let index = index"
+  [ngStyle]="{ backgroundColor: index >= 2 ? 'red' : 'blue' }"
+></app-server>
